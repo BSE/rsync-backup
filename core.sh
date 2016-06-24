@@ -23,7 +23,7 @@ fi
 while read line
 do
 echo "+ backup '$line' $(date)" >> $log
-rsync -a --stats --delete --password-file=/etc/rsync.secret "$line" backup@nas1::backup/$host/$id/ >> $log
+rsync -a --exclude '.env' --stats --delete --password-file=/etc/rsync.secret "$line" backup@nas1::backup/$host/$id/ >> $log
 echo "" >> $log
 echo "- end backup '$line' $(date)" >> $log
 echo "" >> $log
